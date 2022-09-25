@@ -19,7 +19,6 @@ int main()
         while(getline(file, line))
         {
             stringstream str(line);
-
             if(i==0){
                 i++;
                 continue;

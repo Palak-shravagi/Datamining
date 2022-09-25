@@ -6,7 +6,6 @@
 #include <sstream>
 #include <ostream>
 using namespace std;
-
 int quartile(int q, vector<int> &marks)
 {
 
@@ -26,7 +25,7 @@ int main()
     string line, mark;
     vector<int> marks;
     int i = 0;
-    while (getline(fr,line))
+    while (getline(fr, line))
     {
         cout << mark;
         if (i == 0)

@@ -6,14 +6,11 @@ sheet_obj = wb.active
 row = sheet_obj.max_row
 col = sheet_obj.max_column
 
-
 def std_dev(X, l, x_mean):  # claculate S.D.
     ans = 0
     for i in range(0, l):
         ans = ans + (X[i]-x_mean)*(X[i]-x_mean)
     return ans
-
-
 X = []
 Y = []
 x_mean = 0
@@ -27,16 +24,12 @@ for i in range(2, row+1):
     y_mean = y_mean+val2.value
 
 l = len(X)
-
 x_mean = x_mean/l
 y_mean = y_mean/l
-
 cov = 0
 for i in range(0, l):
     cov = cov + (X[i]-x_mean)*(Y[i]-y_mean)
 
-
 s = math.sqrt(std_dev(X, l, x_mean)*std_dev(Y, l, y_mean))
-
 corelation = cov/s
 print(corelation)
