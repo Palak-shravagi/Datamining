@@ -2,6 +2,8 @@ import pandas as pd
 df = pd.read_csv(
     '/home/palak/Documents/assignments/dm/datafile/t&d_wt.csv', names=['A', 'B'])
 data = df.values.tolist()
+print(data)
+print(len(data[0]))
 c1_tot = 0
 c2_tot = 0
 r1_tot = 0

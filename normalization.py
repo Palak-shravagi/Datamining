@@ -7,6 +7,8 @@ wb_obj = openpyxl.load_workbook(
 sheet_obj = wb_obj.active
 m_row = sheet_obj.max_row
 n_col = sheet_obj.max_column
+#new_min = input("enter new min")
+#new_max = input("enter new max")
 new_max = 200
 new_min = 100
 # traversing the excel sheet columnwise and processing each column

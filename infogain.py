@@ -5,11 +5,7 @@ import math
 file = pd.read_csv(
     "/home/palak/Documents/assignments/dm/datafile/infogain_ip.csv")
 
-
 def calc_entropy(column):
-    """
-    Calculate entropy given a pandas series, list, or numpy array.
-    """
     l = column.shape[0]
     freq = {}
     for item in column:
@@ -32,11 +28,7 @@ def calc_entropy(column):
 
     return -entropy
 
-
 def calc_information_gain(data, split_name, target_name):
-    """
-    Calculate information gain given a data set, column to split on, and target
-    """
     # Calculate the original entropy
     original_entropy = calc_entropy(data[target_name])
 
