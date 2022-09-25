@@ -15,6 +15,7 @@ def read_data_in_dict(filename):
         'items': items,
         'transactions': transactions
     }
+    print(data)
     return data
 
 

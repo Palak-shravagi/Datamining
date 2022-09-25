@@ -1,7 +1,12 @@
 
+# In[1]:
+
 import math
 from itertools import combinations
 from itertools import permutations
+
+
+# In[2]:
 
 def read_data_in_dict(filename):
     f = open(filename)
@@ -16,6 +21,9 @@ def read_data_in_dict(filename):
     }
     return data
 
+
+# In[3]:
+
 def frequent_itemsets(data, level, min_support):
     items = data['items']
     transactions = data['transactions']
@@ -29,6 +37,8 @@ def frequent_itemsets(data, level, min_support):
     return frequent_sets
 
 
+# In[4]:
+
 def get_freq(s, items, transactions):
     freq = 0
     for t in transactions:
@@ -40,13 +50,13 @@ def get_freq(s, items, transactions):
     return freq
 
 
+# In[5]:
+
 def generate_rule(data, min_support, min_confidence):
     items = data['items']
     transactions = data['transactions']
     for l in range(2, len(data['items'])+1):
-        # print(data)
         frequent_set = frequent_itemsets(data, l, min_support)
-        print(frequent_set)
         for s in frequent_set:
             freq_s = get_freq(s, items, transactions)
             _s_permute = list(permutations(s))
@@ -60,6 +70,11 @@ def generate_rule(data, min_support, min_confidence):
                         print(x, ' -> ', y, 'confidence is ', c)
 
 
+# In[6]:
+
 data = read_data_in_dict(
     '/home/palak/Documents/assignments/dm/datafile/assoc_rule.csv')
 generate_rule(data, 0.5, 0.4)
+
+
+# In[ ]:

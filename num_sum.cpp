@@ -1,11 +1,10 @@
 #include <bits/stdc++.h>
 #include <iostream>
-#include <ostream>
 #include <fstream>
 #include <string>
 #include <vector>
 #include <sstream>
-
+#include <ostream>
 using namespace std;
 
 int quartile(int q, vector<int> &marks)
@@ -21,23 +20,23 @@ int main()
     fstream fr("/home/palak/Documents/assignments/dm/datafile/num_sum_ip.csv", ios::in);
     if (!fr.is_open())
     {
-        perror("Error in opening input file : ");
-        return -1;
+        perror("Error : ");
+        return 0;
     }
     string line, mark;
     vector<int> marks;
     int i = 0;
-    while (getline(fr, line))
+    while (getline(fr,line))
     {
-        if (line.length() == 0)
-            break;
-
+        cout << mark;
         if (i == 0)
         {
             i++;
             continue;
         }
+        cout << mark;
         stringstream str(line);
+        cout << mark;
         getline(str, mark, ',');
 
         int mk = stoi(mark);
