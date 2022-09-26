@@ -6,11 +6,14 @@ sheet_obj = wb.active
 row = sheet_obj.max_row
 col = sheet_obj.max_column
 
+
 def std_dev(X, l, x_mean):  # claculate S.D.
     ans = 0
     for i in range(0, l):
         ans = ans + (X[i]-x_mean)*(X[i]-x_mean)
     return ans
+
+
 X = []
 Y = []
 x_mean = 0
