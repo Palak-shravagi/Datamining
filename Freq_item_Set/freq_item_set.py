@@ -1,8 +1,7 @@
 
-
 import math
 from itertools import combinations
-from itertools import permutations
+from csv import writer
 
 
 def read_data_in_dict(filename):
@@ -16,11 +15,11 @@ def read_data_in_dict(filename):
         'items': items,
         'transactions': transactions
     }
+    print(data)
     return data
 
 
-data = read_data_in_dict(
-    '/home/palak/Documents/assignments/dm/datafile/assoc_rule.csv')
+data = read_data_in_dict('freqitem.csv')
 
 
 def get_freq(s, items, transactions):
@@ -34,6 +33,12 @@ def get_freq(s, items, transactions):
     return freq
 
 
+def append_list_as_row(file_name, list_of_elem):
+    with open(file_name, 'a+', newline='') as write_obj:
+        csv_writer = writer(write_obj)
+        csv_writer.writerow(list_of_elem)
+
+
 def frequent_itemsets(data, level, min_support):
     items = data['items']
     transactions = data['transactions']
@@ -44,25 +49,10 @@ def frequent_itemsets(data, level, min_support):
         freq = get_freq(s, items, transactions)
         if freq >= min_freq:
             frequent_sets.append(s)
+    print(frequent_sets)
+    append_list_as_row('freqitem.csv', frequent_sets)
+
     return frequent_sets
 
 
-def generate_rule(data, min_support, min_confidence):
-    items = data['items']
-    transactions = data['transactions']
-    for l in range(2, len(data['items'])+1):
-        frequent_set = frequent_itemsets(data, l, min_support)
-        for s in frequent_set:
-            freq_s = get_freq(s, items, transactions)
-            _s_permute = list(permutations(s))
-            for _s in _s_permute:
-                for i in range(0, len(_s)-1):
-                    x = _s[0:i+1]
-                    y = _s[i+1:]
-                    freq_x = get_freq(x, items, transactions)
-                    c = freq_s/freq_x
-                    if c >= min_confidence:
-                        print(x, ' -> ', y, 'confidence is ', c)
-
-
-generate_rule(data, 0.5, 0.4)
+frequent_itemsets(data, 2, 0.5)

@@ -16,7 +16,7 @@ int quartile(int q, vector<int> &marks)
 }
 int main()
 {
-    fstream fr("/home/palak/Documents/assignments/dm/datafile/num_sum_ip.csv", ios::in);
+    fstream fr("num_sum_ip.csv", ios::in);
     if (!fr.is_open())
     {
         perror("Error : ");
@@ -55,7 +55,7 @@ int main()
     {
         median = (marks[n / 2 - 1] + marks[n / 2]) / 2.0;
     }
-    ofstream fw("/home/palak/Documents/assignments/dm/datafile/num_sum_op.csv", ios::out);
+    ofstream fw("num_sum_op.csv", ios::out);
     fw << "Minimum Value : " << min_marks << endl;
     fw << "Lower Quartile : " << quartile(25, marks) << endl;
     fw << "Median : " << median << endl;

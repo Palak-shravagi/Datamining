@@ -1,6 +1,6 @@
 import pandas as pd
 df = pd.read_csv(
-    '/home/palak/Documents/assignments/dm/datafile/t&d_wt.csv', names=['A', 'B'])
+    't&d_wt.csv', names=['A', 'B'])
 data = df.values.tolist()
 print(data)
 print(len(data[0]))
@@ -20,7 +20,6 @@ for i in range(2):
             c2_tot = c2_tot+int(float(data[i][j]))
 print("Row 1 Total :", r1_tot)
 print("Row 2 Total :", r2_tot)
-
 print("Col 1 Total :", c1_tot)
 print("Col 2 Total :", c2_tot)
 print("")

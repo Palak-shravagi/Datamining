@@ -3,7 +3,8 @@ import pandas as pd
 import numpy as np
 import math
 file = pd.read_csv(
-    "/home/palak/Documents/assignments/dm/datafile/infogain_ip.csv")
+    "infogain_ip.csv")
+
 
 def calc_entropy(column):
     l = column.shape[0]
@@ -27,6 +28,7 @@ def calc_entropy(column):
             entropy += probabilities[prob] * math.log(probabilities[prob], 2)
 
     return -entropy
+
 
 def calc_information_gain(data, split_name, target_name):
     # Calculate the original entropy
@@ -67,4 +69,4 @@ def append_list_as_row(file_name, list_of_elem):
 
 
 append_list_as_row(
-    '/home/palak/Documents/assignments/dm/datafile/infogain_ip.csv', row_contents)
+    'infogain_ip.csv', row_contents)

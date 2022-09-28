@@ -47,7 +47,7 @@ def five_no_summary(Arr, Ans):
 
 
 wb = openpyxl.load_workbook(
-    "/home/palak/Documents/assignments/dm/datafile/numsum_.xlsx")
+    "numsum_.xlsx")
 sheet_obj = wb.active
 row = sheet_obj.max_row
 col = sheet_obj.max_column
@@ -76,4 +76,4 @@ for i in range(0, 5):
     i = i+1
     j = j+1
 
-wb.save("/home/palak/Documents/assignments/dm/datafile/numsum_.xlsx")
+wb.save("numsum_.xlsx")

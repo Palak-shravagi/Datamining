@@ -9,8 +9,8 @@ using namespace std;
 int main()
 {
     string line, word;
-    fstream file("infogain_cpp.csv", ios::in);
-    string day, outlook, temp, humidity, wind, playGame;
+    ifstream file("infogain_cpp.csv");
+    string day, outlook, five, six;
     map<string, int> parent;
     map<string, map<string, int>> child;
     if (file.is_open())
@@ -26,12 +26,11 @@ int main()
             }
             getline(str, day, ',');
             getline(str, outlook, ',');
-            getline(str, temp, ',');
-            getline(str, humidity, ',');
-            getline(str, wind, ',');
-            getline(str, playGame, ',');
-            parent[playGame]++;
-            child[wind][playGame]++;
+            getline(str, five, ',');
+            getline(str, six, ',');
+
+            parent[six]++;
+            child[five][six]++;
         }
         double posR = parent["Yes"], negR = parent["No"];
         double totR = posR + negR;

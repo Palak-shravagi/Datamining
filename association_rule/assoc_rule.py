@@ -2,6 +2,7 @@ import math
 from itertools import combinations
 from itertools import permutations
 
+
 def read_data_in_dict(filename):
     f = open(filename)
     lines = f.readlines()
@@ -14,7 +15,6 @@ def read_data_in_dict(filename):
         'transactions': transactions
     }
     return data
-
 
 
 def frequent_itemsets(data, level, min_support):
@@ -41,7 +41,6 @@ def get_freq(s, items, transactions):
     return freq
 
 
-
 def generate_rule(data, min_support, min_confidence):
     items = data['items']
     transactions = data['transactions']
@@ -58,7 +57,6 @@ def generate_rule(data, min_support, min_confidence):
                     c = freq_s/freq_x
                     if c >= min_confidence:
                         print(x, ' -> ', y, 'confidence is ', c)
-
 
 
 data = read_data_in_dict('AR_exp.csv')
