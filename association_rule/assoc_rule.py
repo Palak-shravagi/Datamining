@@ -2,19 +2,60 @@ import math
 from itertools import combinations
 from itertools import permutations
 
+import openpyxl
 
-def read_data_in_dict(filename):
-    f = open(filename)
-    lines = f.readlines()
+wb = openpyxl.load_workbook("freqitem.xlsx")
+sheet_obj = wb.active
+row = sheet_obj.max_row
+col = sheet_obj.max_column
+
+
+def read_data_in_dict():
+    trans = []
+    for i in range(2, row+1):
+        x = sheet_obj.cell(row=i, column=1)
+        trans.append(x.value)
+
+    string_data = []
+    for i in range(2, row+1):
+        for j in range(2, col+1):
+            x = sheet_obj.cell(row=i, column=j)
+            if (x.value):
+                string_data.append(x.value)
+    items = set(string_data)
+    items = sorted(items)
+
+    length = len(items)
     transactions = []
-    items = lines[0].split(',')
-    for line in lines[1:]:
-        transactions.append(list(map(int, line.split(','))))
+    for i in range(2, row+1):
+        s = []
+        for j in range(2, col+1):
+            x = sheet_obj.cell(row=i, column=j)
+            if (x.value):
+                s.append(x.value)
+        s = sorted(s)
+        req = []
+        k = 0
+        for j in range(0, length):
+            if k < len(s):
+                if items[j] == s[k]:
+                    req.append(1)
+                    k = k+1
+                else:
+                    req.append(0)
+            else:
+                req.append(0)
+
+        transactions.append(req)
+
     data = {
         'items': items,
         'transactions': transactions
     }
     return data
+
+
+data = read_data_in_dict()
 
 
 def frequent_itemsets(data, level, min_support):
@@ -42,6 +83,7 @@ def get_freq(s, items, transactions):
 
 
 def generate_rule(data, min_support, min_confidence):
+    itr = row+2
     items = data['items']
     transactions = data['transactions']
     for l in range(2, len(data['items'])+1):
@@ -56,8 +98,18 @@ def generate_rule(data, min_support, min_confidence):
                     freq_x = get_freq(x, items, transactions)
                     c = freq_s/freq_x
                     if c >= min_confidence:
+                        val0 = sheet_obj.cell(row=itr, column=1)
+                        val1 = sheet_obj.cell(row=itr, column=2)
+                        itr = itr+1
+                        val0.value = str(x)+"->"+str(y)
+                        val1.value = "confidence is:"+str(c)
                         print(x, ' -> ', y, 'confidence is ', c)
 
 
-data = read_data_in_dict('AR_exp.csv')
-generate_rule(data, 0.5, 0.4)
+min_sup = float(input("Enter Min Support: "))
+min_conf = float(input("Enter Min Confidence: "))
+print("Min Support: ", min_sup)
+print("Min Confidence: ", min_conf)
+
+generate_rule(data, min_sup, min_conf)
+wb.save("freqitem_op.xlsx")
