@@ -1,0 +1,6 @@
+Class Region , Europe ,,, North America ,,, Both Regions,,, 
+ ,Count,t-weight,d-weight,Count,t-weight,d-weight,Count,t-weight,d-weight
+biographical-film,150,55.5556%,78.9474%,120,44.4444%,66.6667%,270,100%,72.973%
+horromovie,0,0%,0%,60,100%,33.3333%,60,100%,16.2162%
+horrormovie,40,100%,21.0526%,0,0%,0%,40,100%,10.8108%
+Both Classes ,190,51.3513%,100%,180,48.6487%,100%,370,100% , 100%

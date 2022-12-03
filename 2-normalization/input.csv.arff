@@ -1,0 +1,10 @@
+@relation input-weka.filters.unsupervised.attribute.Normalize-S1.0-T0.0
+
+@attribute Marks numeric
+@attribute tuyetru numeric
+
+@data
+0,855
+0.166667,85
+0.583333,10
+1,65
